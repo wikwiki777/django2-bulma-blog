@@ -2,7 +2,7 @@ language: python
 python: "3.7"
 before_install:
   - sudo apt update
-  - sudo apt install geckodriver
+  - sudo apt install firefox-geckodriver
 install: "pip install -r requirements.txt"
 script:
   - SECRET_KEY="whatever" ./manage.py test
