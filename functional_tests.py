@@ -22,7 +22,6 @@ class NewVisitorTest(unittest.TestCase):
     def test_user_can_view_homepage(self):
         self.browser.get("http://localhost:8000")
         self.assertIn("Django2-bulma-blog", self.browser.title)
-        self.fail("Finish the test!")
 
 
 if __name__ == "__main__":

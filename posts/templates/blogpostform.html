@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <h1 class="subtitle">New Post</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="field">
+            <label class="label">{{form.title.label_tag}}</label>
+            <div class="control">
+                <input class="input" name="title" id="id_title" type="text" placeholder="e.g Alex Smith" value="{{ form.title.value|default:'' }}">
+            </div>
+            {% if form.title.errors %}
+            <p class="help">{{ form.title.errors }}</p>
+            {% endif %}
+        </div>
+
+        <div class="field">
+            <label class="label">{{form.content.label_tag}}</label>
+            <div class="control">
+                <textarea class="textarea" name="content" id="id_content" placeholder="Textarea"></textarea>
+            </div>
+        </div>
+
+        <div class="field">
+            <label class="label">{{form.image.label_tag}}</label>
+            <div class="control">
+                <input class="input" name="image" id="id_image" type="file" accept="image/*">
+            </div>
+        </div>       
+
+        <div class="field">
+            <label class="label">{{form.tag.label_tag}}</label>
+            <div class="control">
+                <input class="input" name="tag" id="id_tag" type="text" placeholder="e.g Alex Smith" value="{{ form.tag.value|default:'' }}">
+            </div>
+            {% if form.tag.errors %}
+            <p class="help">{{ form.tag.errors }}</p>
+            {% endif %}
+        </div>
+
+        <div class="field">
+            <label class="label">{{form.published_date.label_tag}}</label>
+            <div class="control">
+                {{form.published_date}}
+            </div>
+            {% if form.published_date.errors %}
+            <p class="help">{{ form.published_date.errors }}</p>
+            {% endif %}
+        </div>
+        <button type="submit" class="button is-success">Save</button>
+    </form>
+{% endblock %}

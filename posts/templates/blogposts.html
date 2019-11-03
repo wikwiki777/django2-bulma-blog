@@ -1,26 +1,38 @@
 {% extends 'base.html' %}
 {% block content %}
     {% for post in posts %}
-        <div class="row">
-            <div class="col-md-2 col-sm-3 text-center">
-                <a class="story-img" href="#">
-                    <img src="/media/img/profile.jpg" class="img-circle">
-                </a>
-                <p><span class="boldtext">Author:</span> Niel</p>
-            </div>
-            <div class="col-md-10 col-sm-9">
-                <h3>{{ post.title }}</h3>
-                <div class="row">
-                    <div class="col-xs-9">
-                        <p>{{ post.content|truncatewords:30 }}</p>
-                        <p><a href="{% url 'post_detail' post.id %}"  class="btn btn-default">Read more</a></p>
-                        <p><span class="boldtext">Published on:</span> {{ post.published_date }} </p>
-                        <p><span class="boldtext">Views:</span> {{post.views}}</p>
-                        <p><span class="boldtext">Tag:</span> {{ post.tag }}</p>
-                    </div>
+        <div class="column is-one-third">
+        <div class="card">
+                <div class="card-image">
+                  <figure class="image is-4by3">
+                    <img src="/media/{{ post.image }}" alt="Placeholder image">
+                  </figure>
                 </div>
+                <div class="card-content">
+                  <div class="media">
+                    <div class="media-left">
+                      <figure class="image is-48x48">
+                        <img src="/media/img/profile.jpg" alt="Placeholder image">
+                      </figure>
+                    </div>
+                    <div class="media-content">
+                      <p class="title is-4">{{ post.title }}</p>
+                      <p class="subtitle is-6">@johnsmith</p>
+                    </div>
+                  </div>
+              
+                  <div class="content">
+                        <p>{{ post.content|truncatewords:30 }}</p>
+                        <p><span class="has-text-weight-bold">Published on:</span> {{ post.published_date }} </p>
+                        <p><span class="has-text-weight-bold">Views:</span> {{post.views}}</p>
+                        <p><span class="has-text-weight-bold">Tag:</span> {{ post.tag }}</p>
+
+                  </div>
+                  <footer class="card-footer">
+                        <a href="{% url 'post_detail' post.id %}" class="card-footer-item">Read More</a>
+                      </footer>
+                </div>
+              </div>
             </div>
-            <hr>
-        </div>
     {% endfor %}
 {% endblock %}
